@@ -406,13 +406,11 @@
                         <!-- Pathway -->
                         <div class="form-row">
                             <label for="pathway">Pathway</label>
-                            <div class="input-group" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                            <div class="input-group">
                                 <input type="radio" id="path-symp" name="pathway" value="sympathetic" class="choice-input">
                                 <label for="path-symp" class="choice-label">Sympathetic</label>
                                 <input type="radio" id="path-para" name="pathway" value="parasympathetic" class="choice-input">
                                 <label for="path-para" class="choice-label">Parasympathetic</label>
-                                <input type="radio" id="path-gang" name="pathway" value="ganglionic" class="choice-input">
-                                <label for="path-gang" class="choice-label">Ganglionic/NMJ</label>
                             </div>
                         </div>
 
@@ -456,13 +454,11 @@
                         <!-- Net Tilt -->
                         <div class="form-row">
                             <label>Net Tilt</label>
-                            <div class="input-group" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+                            <div class="input-group">
                                 <input type="radio" id="tilt-fight" name="tilt" value="fight" class="choice-input">
                                 <label for="tilt-fight" class="choice-label">Fight-or-Flight</label>
                                 <input type="radio" id="tilt-rest" name="tilt" value="rest" class="choice-input">
                                 <label for="tilt-rest" class="choice-label">Rest-and-Digest</label>
-                                <input type="radio" id="tilt-variable" name="tilt" value="variable" class="choice-input">
-                                <label for="tilt-variable" class="choice-label">Variable</label>
                             </div>
                         </div>
                         
@@ -625,16 +621,9 @@
                 { name: "Tabun (GA)", tone: "parasympathetic", agonism: "agonist", actionPaths: ["indirect"], indirectMechanisms: ["AChE inhibition"], receptors: ["M1", "M2", "M3"], receptorMap: { "M1": { mode: "indirect", mechanisms: ["AChE inhibition"] }, "M2": { mode: "indirect", mechanisms: ["AChE inhibition"] }, "M3": { mode: "indirect", mechanisms: ["AChE inhibition"] } }, explanation: "A highly toxic organophosphate nerve agent and irreversible AChE inhibitor." },
                 { name: "VX", tone: "parasympathetic", agonism: "agonist", actionPaths: ["indirect"], indirectMechanisms: ["AChE inhibition"], receptors: ["M1", "M2", "M3"], receptorMap: { "M1": { mode: "indirect", mechanisms: ["AChE inhibition"] }, "M2": { mode: "indirect", mechanisms: ["AChE inhibition"] }, "M3": { mode: "indirect", mechanisms: ["AChE inhibition"] } }, explanation: "An extremely potent and persistent organophosphate nerve agent and irreversible AChE inhibitor." },
                 { name: "Metoclopramide (Reglan)", tone: "parasympathetic", agonism: "agonist", actionPaths: ["indirect"], indirectMechanisms: ["Other"], receptors: ["M1", "M2", "M3"], receptorMap: { "M1": { mode: "indirect", mechanisms: ["Other"] }, "M2": { mode: "indirect", mechanisms: ["Other"] }, "M3": { mode: "indirect", mechanisms: ["Other"] } }, explanation: "Primarily a D2 antagonist, but also acts as a prokinetic by promoting acetylcholine release in the GI tract." },
-                
-                // --- GANGLIONIC & NMJ AGENTS ---
-                { name: "Nicotine", tone: "ganglionic", agonism: "agonist", actionPaths: ["direct"], indirectMechanisms: [], receptors: ["Nn", "Nm"], receptorMap: { "Nn": { mode: "direct" }, "Nm": { mode: "direct" } }, tiltOverride: "variable", explanation: "A nicotinic receptor agonist that stimulates both sympathetic and parasympathetic ganglia (Nn) and the neuromuscular junction (Nm)." },
-                { name: "Hexamethonium", tone: "ganglionic", agonism: "antagonist", actionPaths: ["direct"], indirectMechanisms: [], receptors: ["Nn"], receptorMap: { "Nn": { mode: "direct" } }, tiltOverride: "variable", explanation: "A non-depolarizing ganglionic blocker that antagonizes nicotinic (Nn) receptors in both autonomic ganglia." },
-                { name: "Mecamylamine", tone: "ganglionic", agonism: "antagonist", actionPaths: ["direct"], indirectMechanisms: [], receptors: ["Nn"], receptorMap: { "Nn": { mode: "direct" } }, tiltOverride: "variable", explanation: "A non-competitive ganglionic blocker that antagonizes nicotinic (Nn) receptors." },
-                { name: "Trimethaphan", tone: "ganglionic", agonism: "antagonist", actionPaths: ["direct"], indirectMechanisms: [], receptors: ["Nn"], receptorMap: { "Nn": { mode: "direct" } }, tiltOverride: "variable", explanation: "A short-acting ganglionic blocker used for controlled hypotension." },
-                { name: "Pancuronium", tone: "ganglionic", agonism: "antagonist", actionPaths: ["direct"], indirectMechanisms: [], receptors: ["Nm"], receptorMap: { "Nm": { mode: "direct" } }, tiltOverride: "variable", explanation: "A non-depolarizing neuromuscular blocker that antagonizes nicotinic (Nm) receptors at the NMJ." },
             ];
 
-            const allReceptors = ["alpha-1", "alpha-2", "beta-1", "beta-2", "beta-3", "M1", "M2", "M3", "M4", "M5", "Nn", "Nm"];
+            const allReceptors = ["alpha-1", "alpha-2", "beta-1", "beta-2", "beta-3", "M1", "M2", "M3", "M4", "M5"];
 
             // --- STATE --- //
             let state = {
@@ -1069,12 +1058,10 @@
                     switch(e.key) {
                         case '1': clickElement('#path-symp'); break;
                         case '2': clickElement('#path-para'); break;
-                        case '3': clickElement('#path-gang'); break;
                         case '5': clickElement('#agonism-agonist'); break;
                         case '6': clickElement('#agonism-antagonist'); break;
                         case 'f': clickElement('#tilt-fight'); break;
                         case 'd': clickElement('#tilt-rest'); break;
-                        case 'v': clickElement('#tilt-variable'); break;
                     }
                 }
             });
